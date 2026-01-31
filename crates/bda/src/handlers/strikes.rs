@@ -1,7 +1,7 @@
 // BDA Strike Correlation Handlers
 // Purpose: HTTP request handlers for strike correlation data
 
-use crate::features::bda::{
+use crate::{
     domain::CreateStrikeCorrelationRequest,
     repositories::StrikeRepository,
 };

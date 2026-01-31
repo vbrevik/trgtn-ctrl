@@ -1,10 +1,10 @@
 // ROE Repository
 // Purpose: Database access layer for ROE requests and decision ROE status
 
-use crate::features::roe::domain::{
+use crate::domain::{
     ROERequest, ROERequestStatus, ROEStatus, CreateROERequestRequest, UpdateROERequestStatusRequest,
 };
-use crate::features::roe::services::DecisionInfo;
+use crate::services::DecisionInfo;
 use sqlx::{Pool, Sqlite, Row};
 use uuid::Uuid;
 
@@ -306,7 +306,7 @@ impl ROERepository {
         &self,
         decision_id: &str,
     ) -> Result<(ROEStatus, Option<String>), sqlx::Error> {
-        use crate::features::roe::services::ROEDeterminationService;
+        use crate::services::ROEDeterminationService;
         
         // Get decision info
         let decision_info = match self.get_decision_info(decision_id).await? {

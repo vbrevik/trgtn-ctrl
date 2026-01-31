@@ -3,7 +3,7 @@
 
 #[cfg(test)]
 mod tests {
-    use crate::features::targeting::services::*;
+    use crate::services::*;
 
     // ============================================================================
     // F3EAD STAGE TRANSITION TESTS

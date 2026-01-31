@@ -1,14 +1,14 @@
 // BDA Component Assessment Repository
 // Purpose: Database access layer for component-level assessments
 
-use crate::features::bda::domain::component_assessment::{
+use crate::domain::component_assessment::{
     BdaComponentAssessment,
     CreateComponentAssessmentRequest,
     UpdateComponentAssessmentRequest,
     ComponentType,
     ComponentCriticality,
 };
-use crate::features::bda::domain::{PhysicalDamage, FunctionalDamage};
+use crate::domain::{PhysicalDamage, FunctionalDamage};
 use sqlx::{Pool, Sqlite, Row};
 use uuid::Uuid;
 

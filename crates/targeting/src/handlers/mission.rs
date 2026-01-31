@@ -4,8 +4,8 @@ use axum::{
     response::{IntoResponse, Json},
 };
 use sqlx::{Pool, Sqlite, Row};
-use crate::features::auth::jwt::Claims;
-use crate::features::targeting::domain::*;
+use crate::jwt::Claims;
+use crate::domain::*;
 
 // ============================================================================
 // DECISION GATES - Dashboard operational status

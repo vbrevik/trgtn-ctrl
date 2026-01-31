@@ -1,7 +1,7 @@
 // ROE Determination Service
 // Purpose: Automatically determine if a decision requires ROE based on its characteristics
 
-use crate::features::roe::domain::ROEStatus;
+use crate::domain::ROEStatus;
 
 /// Decision information needed for ROE determination
 /// This is a simplified view - in production, this would come from a decisions feature module

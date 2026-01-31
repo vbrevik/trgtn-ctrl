@@ -1,7 +1,7 @@
 // Decision Routing Service with ROE Integration
 // Purpose: Route decisions to meetings, blocking if ROE is required but not approved
 
-use crate::features::roe::{
+use crate::{
     domain::RoutingPlan,
     repositories::ROERepository,
     services::ROEBlockingCheckService,

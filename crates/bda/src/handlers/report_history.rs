@@ -1,7 +1,7 @@
 // BDA Report History Handlers
 // Purpose: HTTP request handlers for BDA report history
 
-use crate::features::bda::repositories::ReportHistoryRepository;
+use crate::repositories::ReportHistoryRepository;
 use axum::{
     extract::{Path, Query},
     http::StatusCode,

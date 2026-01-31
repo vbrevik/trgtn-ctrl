@@ -5,8 +5,8 @@ use axum::{
 };
 use serde::Deserialize;
 use sqlx::{Pool, Sqlite};
-use crate::features::targeting::domain::*;
-use crate::features::targeting::repositories::*;
+use crate::domain::*;
+use crate::repositories::*;
 use super::common::TargetQueryParams;
 
 pub async fn list_dtl(
@@ -40,7 +40,7 @@ pub async fn update_dtl_priority(
     Path(id): Path<String>,
     Json(req): Json<UpdatePriorityRequest>,
 ) -> Result<impl IntoResponse, StatusCode> {
-    use crate::features::targeting::services::DtlScoring;
+    use crate::services::DtlScoring;
     
     // Validate scores are in range [0.0, 1.0]
     if req.priority_score < 0.0 || req.priority_score > 1.0 {

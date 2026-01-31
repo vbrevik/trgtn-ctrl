@@ -1,7 +1,7 @@
 // BDA Report Generator Service
 // Purpose: Generate standardized BDA reports in various formats
 
-use crate::features::bda::domain::{
+use crate::domain::{
     bda_report::BdaReport,
     report_template::GenerateReportRequest,
 };

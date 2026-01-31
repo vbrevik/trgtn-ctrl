@@ -4,9 +4,9 @@ use axum::{
     response::{IntoResponse, Json},
 };
 use sqlx::{Pool, Sqlite};
-use crate::features::auth::jwt::Claims;
-use crate::features::targeting::domain::*;
-use crate::features::targeting::repositories::*;
+use crate::jwt::Claims;
+use crate::domain::*;
+use crate::repositories::*;
 
 pub async fn get_risk_assessment(
     State(pool): State<Pool<Sqlite>>,

@@ -8,8 +8,8 @@ use axum::{
 use sqlx::{Pool, Sqlite};
 use std::sync::Arc;
 
-use crate::features::targeting::handlers;
-use crate::features::targeting::services::realtime::RealtimeService;
+use crate::handlers;
+use crate::services::realtime::RealtimeService;
 
 /// Create targeting router with all routes
 pub fn create_router<S>(pool: Pool<Sqlite>, realtime_service: Arc<RealtimeService>) -> Router<S>

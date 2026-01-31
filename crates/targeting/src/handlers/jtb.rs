@@ -6,9 +6,9 @@ use axum::{
 use serde::Deserialize;
 use sqlx::{Pool, Sqlite};
 
-use crate::features::targeting::domain::*;
-use crate::features::targeting::repositories::*;
-use crate::features::auth::jwt::Claims;
+use crate::domain::*;
+use crate::repositories::*;
+use crate::jwt::Claims;
 use super::common::PlatformQueryParams;
 
 pub async fn list_jtb_sessions(

@@ -5,9 +5,9 @@ use axum::{
 };
 use serde::Deserialize;
 use sqlx::{Pool, Sqlite};
-use crate::features::auth::jwt::Claims;
-use crate::features::targeting::domain::*;
-use crate::features::targeting::repositories::TargetRepository;
+use crate::jwt::Claims;
+use crate::domain::*;
+use crate::repositories::TargetRepository;
 use super::common::TargetQueryParams;
 
 pub async fn list_targets(
@@ -283,7 +283,7 @@ pub async fn advance_f3ead_stage(
     Path(id): Path<String>,
     Json(req): Json<AdvanceStageRequest>,
 ) -> Result<impl IntoResponse, StatusCode> {
-    use crate::features::targeting::services::validate_f3ead_transition;
+    use crate::services::validate_f3ead_transition;
     
     // Get current target to check current stage
     let target = TargetRepository::get_by_id(&pool, &id)

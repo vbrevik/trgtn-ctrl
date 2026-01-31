@@ -1,6 +1,6 @@
 // NATO COPD Targeting Cell - Repository Layer
 
-use crate::features::targeting::domain::*;
+use crate::domain::*;
 use sqlx::{Pool, Sqlite, Error as SqlxError, Row};
 
 // ============================================================================
@@ -167,7 +167,7 @@ pub struct DtlRepository;
 
 impl DtlRepository {
     pub async fn create(pool: &Pool<Sqlite>, target_id: &str, priority: f64, feasibility: f64) -> Result<String, SqlxError> {
-        use crate::features::targeting::services::DtlScoring;
+        use crate::services::DtlScoring;
         
         let id = uuid::Uuid::new_v4().to_string();
         
@@ -201,7 +201,7 @@ impl DtlRepository {
     }
     
     pub async fn list_all(pool: &Pool<Sqlite>, limit: Option<i64>) -> Result<Vec<DtlEntry>, SqlxError> {
-        use crate::features::targeting::services::DtlScoring;
+        use crate::services::DtlScoring;
         
         let limit = limit.unwrap_or(100);
         

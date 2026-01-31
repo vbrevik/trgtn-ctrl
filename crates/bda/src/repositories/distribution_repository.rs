@@ -1,7 +1,7 @@
 // BDA Distribution Repository
 // Purpose: Database access layer for report distribution
 
-use crate::features::bda::domain::distribution::{
+use crate::domain::distribution::{
     BdaDistributionList,
     BdaDistributionMember,
     BdaReportDistribution,

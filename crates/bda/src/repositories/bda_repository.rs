@@ -1,7 +1,7 @@
 // BDA Repository
 // Purpose: Database access layer for BDA reports
 
-use crate::features::bda::domain::{
+use crate::domain::{
     BdaReport, CreateBdaReportRequest, UpdateBdaReportRequest,
     BdaStatistics, BdaStatusCounts, BdaRecommendationCounts, BdaPhysicalDamageCounts,
     PhysicalDamage, FunctionalDamage, AssessmentType, BdaStatus, Recommendation,
@@ -54,23 +54,23 @@ impl BdaRepository {
         };
         
         let effect_level_str = req.effect_level.as_ref().map(|e| match e {
-            crate::features::bda::domain::EffectLevel::FirstOrder => "first_order",
-            crate::features::bda::domain::EffectLevel::SecondOrder => "second_order",
-            crate::features::bda::domain::EffectLevel::ThirdOrder => "third_order",
+            crate::domain::EffectLevel::FirstOrder => "first_order",
+            crate::domain::EffectLevel::SecondOrder => "second_order",
+            crate::domain::EffectLevel::ThirdOrder => "third_order",
         });
         
         let civcas_str = req.civcas_credibility.as_ref().map(|c| match c {
-            crate::features::bda::domain::CivcasCredibility::NoCredibility => "no_credibility",
-            crate::features::bda::domain::CivcasCredibility::Possible => "possible",
-            crate::features::bda::domain::CivcasCredibility::Credible => "credible",
-            crate::features::bda::domain::CivcasCredibility::Confirmed => "confirmed",
+            crate::domain::CivcasCredibility::NoCredibility => "no_credibility",
+            crate::domain::CivcasCredibility::Possible => "possible",
+            crate::domain::CivcasCredibility::Credible => "credible",
+            crate::domain::CivcasCredibility::Confirmed => "confirmed",
         });
         
         let weapon_perf_str = req.weapon_performance_vs_predicted.as_ref().map(|w| match w {
-            crate::features::bda::domain::WeaponPerformance::Exceeded => "exceeded",
-            crate::features::bda::domain::WeaponPerformance::Met => "met",
-            crate::features::bda::domain::WeaponPerformance::Below => "below",
-            crate::features::bda::domain::WeaponPerformance::Failed => "failed",
+            crate::domain::WeaponPerformance::Exceeded => "exceeded",
+            crate::domain::WeaponPerformance::Met => "met",
+            crate::domain::WeaponPerformance::Below => "below",
+            crate::domain::WeaponPerformance::Failed => "failed",
         });
         
         sqlx::query(
@@ -547,32 +547,32 @@ impl BdaRepository {
         }
     }
     
-    fn parse_effect_level(&self, s: &str) -> crate::features::bda::domain::EffectLevel {
+    fn parse_effect_level(&self, s: &str) -> crate::domain::EffectLevel {
         match s {
-            "first_order" => crate::features::bda::domain::EffectLevel::FirstOrder,
-            "second_order" => crate::features::bda::domain::EffectLevel::SecondOrder,
-            "third_order" => crate::features::bda::domain::EffectLevel::ThirdOrder,
-            _ => crate::features::bda::domain::EffectLevel::FirstOrder,
+            "first_order" => crate::domain::EffectLevel::FirstOrder,
+            "second_order" => crate::domain::EffectLevel::SecondOrder,
+            "third_order" => crate::domain::EffectLevel::ThirdOrder,
+            _ => crate::domain::EffectLevel::FirstOrder,
         }
     }
     
-    fn parse_civcas(&self, s: &str) -> crate::features::bda::domain::CivcasCredibility {
+    fn parse_civcas(&self, s: &str) -> crate::domain::CivcasCredibility {
         match s {
-            "no_credibility" => crate::features::bda::domain::CivcasCredibility::NoCredibility,
-            "possible" => crate::features::bda::domain::CivcasCredibility::Possible,
-            "credible" => crate::features::bda::domain::CivcasCredibility::Credible,
-            "confirmed" => crate::features::bda::domain::CivcasCredibility::Confirmed,
-            _ => crate::features::bda::domain::CivcasCredibility::NoCredibility,
+            "no_credibility" => crate::domain::CivcasCredibility::NoCredibility,
+            "possible" => crate::domain::CivcasCredibility::Possible,
+            "credible" => crate::domain::CivcasCredibility::Credible,
+            "confirmed" => crate::domain::CivcasCredibility::Confirmed,
+            _ => crate::domain::CivcasCredibility::NoCredibility,
         }
     }
     
-    fn parse_weapon_perf(&self, s: &str) -> crate::features::bda::domain::WeaponPerformance {
+    fn parse_weapon_perf(&self, s: &str) -> crate::domain::WeaponPerformance {
         match s {
-            "exceeded" => crate::features::bda::domain::WeaponPerformance::Exceeded,
-            "met" => crate::features::bda::domain::WeaponPerformance::Met,
-            "below" => crate::features::bda::domain::WeaponPerformance::Below,
-            "failed" => crate::features::bda::domain::WeaponPerformance::Failed,
-            _ => crate::features::bda::domain::WeaponPerformance::Met,
+            "exceeded" => crate::domain::WeaponPerformance::Exceeded,
+            "met" => crate::domain::WeaponPerformance::Met,
+            "below" => crate::domain::WeaponPerformance::Below,
+            "failed" => crate::domain::WeaponPerformance::Failed,
+            _ => crate::domain::WeaponPerformance::Met,
         }
     }
 }

@@ -1,7 +1,7 @@
 // BDA Distribution Handlers
 // Purpose: HTTP request handlers for report distribution
 
-use crate::features::bda::{
+use crate::{
     domain::{
         CreateDistributionListRequest,
         AddDistributionMemberRequest,
@@ -142,7 +142,7 @@ pub async fn distribute_report(
                 &payload.report_format,
                 &payload.report_template_type,
                 &payload.classification_level,
-                payload.delivery_method.unwrap_or(crate::features::bda::domain::DeliveryMethod::System),
+                payload.delivery_method.unwrap_or(crate::domain::DeliveryMethod::System),
             ).await {
                 Ok(dist) => distributions.push(dist),
                 Err(e) => {

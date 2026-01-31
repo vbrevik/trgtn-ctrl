@@ -1,7 +1,7 @@
 // BDA Report History Repository
 // Purpose: Database access layer for BDA report history
 
-use crate::features::bda::domain::report_history::{BdaReportHistory, ReportHistoryResponse};
+use crate::domain::report_history::{BdaReportHistory, ReportHistoryResponse};
 use sqlx::{Pool, Sqlite, Row};
 
 pub struct ReportHistoryRepository {
@@ -98,15 +98,15 @@ impl ReportHistoryRepository {
         })
     }
     
-    fn parse_change_type(&self, s: &str) -> crate::features::bda::domain::report_history::ChangeType {
+    fn parse_change_type(&self, s: &str) -> crate::domain::report_history::ChangeType {
         match s {
-            "created" => crate::features::bda::domain::report_history::ChangeType::Created,
-            "updated" => crate::features::bda::domain::report_history::ChangeType::Updated,
-            "submitted" => crate::features::bda::domain::report_history::ChangeType::Submitted,
-            "reviewed" => crate::features::bda::domain::report_history::ChangeType::Reviewed,
-            "approved" => crate::features::bda::domain::report_history::ChangeType::Approved,
-            "rejected" => crate::features::bda::domain::report_history::ChangeType::Rejected,
-            _ => crate::features::bda::domain::report_history::ChangeType::Updated,
+            "created" => crate::domain::report_history::ChangeType::Created,
+            "updated" => crate::domain::report_history::ChangeType::Updated,
+            "submitted" => crate::domain::report_history::ChangeType::Submitted,
+            "reviewed" => crate::domain::report_history::ChangeType::Reviewed,
+            "approved" => crate::domain::report_history::ChangeType::Approved,
+            "rejected" => crate::domain::report_history::ChangeType::Rejected,
+            _ => crate::domain::report_history::ChangeType::Updated,
         }
     }
 }

@@ -1,4 +1,4 @@
-use crate::features::bda::domain::{
+use crate::domain::{
     bda_report::BdaReport,
     report_template::{GenerateReportRequest, ReportClassification},
 };

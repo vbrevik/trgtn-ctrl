@@ -4,8 +4,8 @@ use axum::{
     response::{IntoResponse, Json},
 };
 use sqlx::{Pool, Sqlite};
-use crate::features::targeting::domain::*;
-use crate::features::targeting::repositories::*;
+use crate::domain::*;
+use crate::repositories::*;
 use super::common::PlatformQueryParams;
 
 pub async fn list_isr_platforms(

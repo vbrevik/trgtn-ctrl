@@ -1,7 +1,7 @@
 // BDA Reports Handlers
 // Purpose: HTTP request handlers for BDA reports
 
-use crate::features::bda::{
+use crate::{
     domain::{CreateBdaReportRequest, UpdateBdaReportRequest},
     repositories::BdaRepository,
 };

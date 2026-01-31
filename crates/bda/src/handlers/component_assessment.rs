@@ -1,7 +1,7 @@
 // BDA Component Assessment Handlers
 // Purpose: HTTP request handlers for component-level assessments
 
-use crate::features::bda::{
+use crate::{
     domain::{CreateComponentAssessmentRequest, UpdateComponentAssessmentRequest},
     repositories::ComponentAssessmentRepository,
 };

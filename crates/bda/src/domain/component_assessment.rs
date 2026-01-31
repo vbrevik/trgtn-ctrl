@@ -36,12 +36,12 @@ pub struct BdaComponentAssessment {
     pub component_location: Option<String>,
     
     // Physical Damage Assessment
-    pub physical_damage: crate::features::bda::domain::PhysicalDamage,
+    pub physical_damage: crate::domain::PhysicalDamage,
     pub physical_damage_percentage: Option<i32>,
     pub damage_description: Option<String>,
     
     // Functional Damage Assessment
-    pub functional_damage: crate::features::bda::domain::FunctionalDamage,
+    pub functional_damage: crate::domain::FunctionalDamage,
     pub estimated_repair_time_hours: Option<i32>,
     pub repair_cost_estimate_usd: Option<f64>,
     
@@ -73,10 +73,10 @@ pub struct CreateComponentAssessmentRequest {
     pub component_name: String,
     pub component_type: ComponentType,
     pub component_location: Option<String>,
-    pub physical_damage: crate::features::bda::domain::PhysicalDamage,
+    pub physical_damage: crate::domain::PhysicalDamage,
     pub physical_damage_percentage: Option<i32>,
     pub damage_description: Option<String>,
-    pub functional_damage: crate::features::bda::domain::FunctionalDamage,
+    pub functional_damage: crate::domain::FunctionalDamage,
     pub estimated_repair_time_hours: Option<i32>,
     pub repair_cost_estimate_usd: Option<f64>,
     pub component_criticality: Option<ComponentCriticality>,
@@ -93,10 +93,10 @@ pub struct CreateComponentAssessmentRequest {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct UpdateComponentAssessmentRequest {
     pub component_name: Option<String>,
-    pub physical_damage: Option<crate::features::bda::domain::PhysicalDamage>,
+    pub physical_damage: Option<crate::domain::PhysicalDamage>,
     pub physical_damage_percentage: Option<i32>,
     pub damage_description: Option<String>,
-    pub functional_damage: Option<crate::features::bda::domain::FunctionalDamage>,
+    pub functional_damage: Option<crate::domain::FunctionalDamage>,
     pub estimated_repair_time_hours: Option<i32>,
     pub repair_cost_estimate_usd: Option<f64>,
     pub component_criticality: Option<ComponentCriticality>,
@@ -134,14 +134,14 @@ impl BdaComponentAssessment {
     pub fn is_critical_destroyed(&self) -> bool {
         matches!(
             (self.component_criticality, self.physical_damage),
-            (Some(ComponentCriticality::Critical), crate::features::bda::domain::PhysicalDamage::D)
+            (Some(ComponentCriticality::Critical), crate::domain::PhysicalDamage::D)
         )
     }
     
     /// Check if component needs replacement
     pub fn needs_replacement(&self) -> bool {
         self.replacement_required || 
-        matches!(self.physical_damage, crate::features::bda::domain::PhysicalDamage::D)
+        matches!(self.physical_damage, crate::domain::PhysicalDamage::D)
     }
     
     /// Get estimated total downtime (repair time + replacement time if needed)

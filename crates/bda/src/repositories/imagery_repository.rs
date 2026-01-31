@@ -1,7 +1,7 @@
 // BDA Imagery Repository
 // Purpose: Database access layer for BDA imagery
 
-use crate::features::bda::domain::{BdaImagery, CreateBdaImageryRequest, SensorType};
+use crate::domain::{BdaImagery, CreateBdaImageryRequest, SensorType};
 use sqlx::{Pool, Sqlite, Row};
 use uuid::Uuid;
 

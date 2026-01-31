@@ -2,7 +2,7 @@
 // Purpose: Check if a decision can proceed based on ROE status
 // This utility can be used by decision routing or other services that need to check ROE blocking
 
-use crate::features::roe::domain::ROEStatus;
+use crate::domain::ROEStatus;
 use sqlx::Pool;
 use sqlx::sqlite::Sqlite;
 
@@ -116,7 +116,7 @@ impl ROEBlockingCheckService {
         pool: &Pool<Sqlite>,
         decision_id: &str,
     ) -> Result<ROEBlockingResult, sqlx::Error> {
-        use crate::features::roe::repositories::ROERepository;
+        use crate::repositories::ROERepository;
 
         let repo = ROERepository::new(pool.clone());
         let (roe_status, _, _) = repo.get_decision_roe_status(decision_id).await?;

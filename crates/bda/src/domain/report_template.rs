@@ -136,11 +136,11 @@ pub struct ReportGenerationResponse {
 
 impl ReportTemplateType {
     /// Get default template for assessment type
-    pub fn from_assessment_type(assessment_type: crate::features::bda::domain::AssessmentType) -> Self {
+    pub fn from_assessment_type(assessment_type: crate::domain::AssessmentType) -> Self {
         match assessment_type {
-            crate::features::bda::domain::AssessmentType::Initial => ReportTemplateType::Initial,
-            crate::features::bda::domain::AssessmentType::Interim => ReportTemplateType::Interim,
-            crate::features::bda::domain::AssessmentType::Final => ReportTemplateType::Final,
+            crate::domain::AssessmentType::Initial => ReportTemplateType::Initial,
+            crate::domain::AssessmentType::Interim => ReportTemplateType::Interim,
+            crate::domain::AssessmentType::Final => ReportTemplateType::Final,
         }
     }
     

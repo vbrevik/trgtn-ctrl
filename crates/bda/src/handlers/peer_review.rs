@@ -1,7 +1,7 @@
 // BDA Peer Review Handlers
 // Purpose: HTTP request handlers for peer review workflow
 
-use crate::features::bda::{
+use crate::{
     domain::{CreatePeerReviewRequest, UpdatePeerReviewRequest},
     repositories::PeerReviewRepository,
 };

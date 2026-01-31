@@ -1,7 +1,7 @@
 // ROE Handlers
 // Purpose: HTTP request handlers for ROE requests and decision ROE status
 
-use crate::features::roe::{
+use crate::{
     domain::{
         CreateROERequestRequest, UpdateROERequestStatusRequest, UpdateDecisionROEStatusRequest,
         DecisionROEStatusResponse,
@@ -15,7 +15,7 @@ use axum::{
 
     Json,
 };
-use crate::features::auth::jwt::Claims;
+use crate::jwt::Claims;
 use serde::Deserialize;
 use sqlx::{Pool, Row};
 use sqlx::sqlite::Sqlite;
@@ -178,7 +178,7 @@ pub async fn auto_determine_roe_status(
     State(pool): State<Pool<Sqlite>>,
     Path(decision_id): Path<String>,
 ) -> Result<impl IntoResponse, StatusCode> {
-    // use crate::features::roe::domain::ROEStatus;
+    // use crate::domain::ROEStatus;
 
     
     let repo = ROERepository::new(pool);
@@ -205,7 +205,7 @@ pub async fn check_roe_blocking(
     State(pool): State<Pool<Sqlite>>,
     Path(decision_id): Path<String>,
 ) -> Result<impl IntoResponse, StatusCode> {
-    use crate::features::roe::services::ROEBlockingCheckService;
+    use crate::services::ROEBlockingCheckService;
     
     match ROEBlockingCheckService::check_decision_from_db(&pool, &decision_id).await {
         Ok(result) => Ok(Json(result)),
@@ -222,7 +222,7 @@ pub async fn route_decision(
     State(pool): State<Pool<Sqlite>>,
     Path(decision_id): Path<String>,
 ) -> Result<impl IntoResponse, StatusCode> {
-    use crate::features::roe::services::DecisionRoutingService;
+    use crate::services::DecisionRoutingService;
     
     // Fetch decision urgency and deadline from database
     let row = sqlx::query(

@@ -2,7 +2,7 @@
 
 #[cfg(test)]
 mod tests {
-    use crate::features::targeting::handlers::historical::{get_historical_status, get_historical_f3ead, get_historical_bda, HistoricalQueryParams};
+    use crate::handlers::historical::{get_historical_status, get_historical_f3ead, get_historical_bda, HistoricalQueryParams};
     use sqlx::sqlite::SqlitePoolOptions;
     use chrono::Utc;
     use axum::extract::{State, Query};

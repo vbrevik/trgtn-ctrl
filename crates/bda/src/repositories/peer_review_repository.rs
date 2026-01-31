@@ -1,7 +1,7 @@
 // BDA Peer Review Repository
 // Purpose: Database access layer for peer reviews
 
-use crate::features::bda::domain::peer_review::{
+use crate::domain::peer_review::{
     BdaPeerReview,
     CreatePeerReviewRequest,
     UpdatePeerReviewRequest,

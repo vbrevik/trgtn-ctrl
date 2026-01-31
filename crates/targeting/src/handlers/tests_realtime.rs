@@ -2,7 +2,7 @@
 
 #[cfg(test)]
 mod tests {
-    use crate::features::targeting::services::realtime::RealtimeService;
+    use crate::services::realtime::RealtimeService;
 
     #[tokio::test]
     async fn test_realtime_service_broadcast() {

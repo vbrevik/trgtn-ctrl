@@ -10,7 +10,7 @@ use std::convert::Infallible;
 use std::sync::Arc;
 use tokio_stream::{wrappers::BroadcastStream, StreamExt};
 
-use crate::features::targeting::services::realtime::RealtimeService;
+use crate::services::realtime::RealtimeService;
 
 /// SSE endpoint for real-time targeting updates
 /// GET /api/targeting/events

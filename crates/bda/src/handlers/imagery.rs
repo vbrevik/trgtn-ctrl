@@ -1,7 +1,7 @@
 // BDA Imagery Handlers
 // Purpose: HTTP request handlers for BDA imagery
 
-use crate::features::bda::{
+use crate::{
     domain::{CreateBdaImageryRequest, BdaImagery},
     repositories::ImageryRepository,
 };
@@ -153,12 +153,12 @@ pub async fn upload_imagery_file(
         collection_platform,
         sensor_type: sensor_type.and_then(|s| {
             match s.as_str() {
-                "SAR" => Some(crate::features::bda::domain::SensorType::SAR),
-                "EO" => Some(crate::features::bda::domain::SensorType::EO),
-                "IR" => Some(crate::features::bda::domain::SensorType::IR),
-                "FMV" => Some(crate::features::bda::domain::SensorType::FMV),
-                "Commercial" => Some(crate::features::bda::domain::SensorType::Commercial),
-                "Other" => Some(crate::features::bda::domain::SensorType::Other),
+                "SAR" => Some(crate::domain::SensorType::SAR),
+                "EO" => Some(crate::domain::SensorType::EO),
+                "IR" => Some(crate::domain::SensorType::IR),
+                "FMV" => Some(crate::domain::SensorType::FMV),
+                "Commercial" => Some(crate::domain::SensorType::Commercial),
+                "Other" => Some(crate::domain::SensorType::Other),
                 _ => None,
             }
         }),

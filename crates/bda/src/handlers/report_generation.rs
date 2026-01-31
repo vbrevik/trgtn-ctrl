@@ -1,7 +1,7 @@
 // BDA Report Generation Handlers
 // Purpose: HTTP request handlers for report generation
 
-use crate::features::bda::{
+use crate::{
     domain::{GenerateReportRequest, ReportFormat, ReportGenerationResponse},
     repositories::BdaRepository,
     services::ReportGenerator,
@@ -46,7 +46,7 @@ pub async fn generate_report(
                         file_size_bytes: Some(serde_json::to_string(&json_data).unwrap().len() as u64),
                         generated_at: chrono::Utc::now().to_rfc3339(),
                         generated_by: user_id,
-                        classification: payload.classification.unwrap_or(crate::features::bda::domain::ReportClassification::Secret),
+                        classification: payload.classification.unwrap_or(crate::domain::ReportClassification::Secret),
                     };
                     Json(response).into_response()
                 }
@@ -112,7 +112,7 @@ pub async fn generate_report(
 
 /// Get available report templates
 pub async fn get_report_templates() -> impl IntoResponse {
-    use crate::features::bda::domain::ReportTemplateType;
+    use crate::domain::ReportTemplateType;
     
     let templates = vec![
         serde_json::json!({

@@ -9,7 +9,7 @@ use axum::{
 };
 use sqlx::{Pool, Sqlite, Row};
 use serde::Serialize;
-use crate::features::auth::jwt::Claims;
+use crate::jwt::Claims;
 use chrono;
 
 #[derive(Debug, Serialize)]

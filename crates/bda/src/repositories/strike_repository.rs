@@ -1,7 +1,7 @@
 // BDA Strike Correlation Repository
 // Purpose: Database access layer for strike correlation data
 
-use crate::features::bda::domain::{
+use crate::domain::{
     BdaStrikeCorrelation, CreateStrikeCorrelationRequest, 
     GuidancePerformance, WeaponPerformanceSummary
 };
