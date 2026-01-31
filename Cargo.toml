@@ -1,0 +1,45 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/targeting",
+    "crates/bda",
+    "crates/roe",
+    "crates/targeting-server",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["MSHNCTRL Team"]
+license = "MIT"
+
+[workspace.dependencies]
+# Web framework
+axum = { version = "0.7", features = ["macros", "multipart"] }
+tokio = { version = "1.0", features = ["full"] }
+tower-http = { version = "0.5", features = ["cors"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Database
+sqlx = { version = "0.7", features = ["sqlite", "runtime-tokio", "chrono"] }
+
+# Utilities
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.0", features = ["v4", "serde"] }
+anyhow = "1.0"
+thiserror = "1.0"
+validator = { version = "0.16", features = ["derive"] }
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# PDF generation for BDA reports
+printpdf = "0.8"
+
+# Core module dependency (path will be updated for git dependency)
+# core-auth = { path = "../mshnctrl-core/crates/core-auth" }
+# core-abac = { path = "../mshnctrl-core/crates/core-abac" }
